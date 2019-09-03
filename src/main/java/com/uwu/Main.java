@@ -1,23 +1,28 @@
 package com.uwu;
 
 import processing.core.PApplet;
+import processing.core.PVector;
+
+import java.util.ArrayList;
 
 public class Main extends PApplet {
+    ArrayList<Ball> balls = new ArrayList<>();
 
     public static void main(String[] args) {
         PApplet.main("com.uwu.Main");
     }
 
     public void settings(){
-        size(300,300);
+        size(1000,1000);
     }
 
     public void setup(){
-        fill(120,50,240);
+
     }
 
     public void draw(){
-        ellipse(width/2,height/2,second(),second());
+        clear();
+
     }
 
 
