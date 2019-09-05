@@ -9,6 +9,7 @@ public class Main extends PApplet {
     ArrayList<Balloon> balloons = new ArrayList<>();
 
     Cannon cannon;
+    int level = 0;
 
     public static void main(String[] args) {
         PApplet.main("com.uwu.Main");
@@ -18,13 +19,26 @@ public class Main extends PApplet {
         size(1000,700);
     }
 
+    void resetLevels() {
+        for(int i = 0; i < level; i++) {
+            float rX = random(0, width);
+            float rY = random(0, height);
+            balloons.add(new Balloon(this, rX, rY));
+        }
+
+    }
+
     public void setup(){
         cannon = new Cannon(this, width/2, 150, 50);
-        balloons.add(new Balloon(this, width/2, height/2));
     }
 
     public void draw(){
         clear();
+
+        if(balloons.size() <= 0) {
+            level++;
+            resetLevels();
+        }
 
         ArrayList<Balloon> removeBalloons = new ArrayList<>();
         ArrayList<CannonBall> removeCannonBalls = new ArrayList<>();
