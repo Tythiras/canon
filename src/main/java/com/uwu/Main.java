@@ -14,7 +14,7 @@ public class Main extends PApplet {
         PApplet.main("com.uwu.Main");
     }
 
-    public void settings(){
+    public void settings() {
         size(1000,700);
     }
 
@@ -25,10 +25,29 @@ public class Main extends PApplet {
 
     public void draw(){
         clear();
+
+        ArrayList<Balloon> removeBalloons = new ArrayList<>();
+        ArrayList<CannonBall> removeCannonBalls = new ArrayList<>();
         for(Balloon balloon : balloons) {
+
+            //collisions and remove
+            for(CannonBall ball : cannon.cannonBalls) {
+                if(balloon.detectCollision(ball)) {
+                    removeBalloons.add(balloon);
+                    removeCannonBalls.add(ball);
+                }
+            }
             balloon.updateLocation();
             balloon.display();
         }
+
+        for (Balloon toRemove : removeBalloons) {
+            balloons.remove(toRemove);
+        }
+        for (CannonBall toRemove : removeCannonBalls) {
+            cannon.cannonBalls.remove(toRemove);
+        }
+
         cannon.updateLocation();
         cannon.display();
     }

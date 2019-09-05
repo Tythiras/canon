@@ -69,6 +69,12 @@ public class Ball {
         //reset acceleration
         acceleration.mult(0);
     }
+    boolean detectCollision(Ball other) {
+        float x = location.x - other.location.x;
+        float y = location.y - other.location.y;
+        float distance = (float) Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
+        return (distance<radius+other.radius);
+    }
     void display() {
         //draw ball
         p.fill(255);

@@ -12,7 +12,7 @@ public class CannonBall extends Ball {
     CannonBall(PApplet parent, float x, float y, float size, float angle) {
         super(parent, x, y, 50, size);
         this.size = size;
-        this.health = 10;
+        this.health = 2;
 
         PVector direction = PVector.fromAngle(PApplet.radians(angle));
 
@@ -20,7 +20,7 @@ public class CannonBall extends Ball {
         this.rotation = direction.mag() % 90;
     }
     void updateLocation() {
-        angle += 1;
+        angle += 2;
         super.updateLocation();
     }
     void display() {
