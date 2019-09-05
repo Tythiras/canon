@@ -71,6 +71,7 @@ public class Cannon {
         }
     }
     void display() {
+        p.fill(255);
         p.pushMatrix();
         p.translate(xLocation, p.height - height /2);
         //main chasis

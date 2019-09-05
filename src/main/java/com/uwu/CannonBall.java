@@ -31,7 +31,7 @@ public class CannonBall extends Ball {
 
         p.rectMode(CENTER);
         p.fill((float) (health*25.5));
-        p.rect(0, 0, size/2, size/2);
+        p.rect(0, 0, size, size );
         p.fill(255);
         p.popMatrix();
     }
