@@ -6,8 +6,9 @@ import processing.core.PVector;
 public class Ball {
     PApplet p;
 
-    float gravity = (float) 3;
+    float gravity = (float) 0.5;
 
+    float airDensity = (float) 0.005;
     boolean hasGravity = true;
 
     PVector location;
@@ -31,12 +32,15 @@ public class Ball {
         acceleration.add(acc);
     }
     void updateLocation() {
-        //gravity
         if(hasGravity) {
+            //gravity
+            float gravitation = gravity*mass;
+            //lift up
+            float uplift = (float) -(airDensity * radius * radius * Math.PI * gravity);
 
-            acceleration.y = acceleration.y + (gravity / mass);
+            float vertForce = gravitation+uplift;
+            acceleration.y += vertForce / mass;
         }
-
         //movement engine
         velocity.add(acceleration);
         location.add(velocity);

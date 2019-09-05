@@ -2,8 +2,11 @@ package com.uwu;
 
 import processing.core.PApplet;
 
+import java.util.ArrayList;
+
 public class Main extends PApplet {
     boolean spaceToggled;
+    ArrayList<Balloon> balloons = new ArrayList<>();
 
     Cannon cannon;
 
@@ -12,16 +15,20 @@ public class Main extends PApplet {
     }
 
     public void settings(){
-        size(1000,1000);
+        size(1000,700);
     }
 
     public void setup(){
         cannon = new Cannon(this, width/2, 150, 50);
-
+        balloons.add(new Balloon(this, width/2, height/2));
     }
 
     public void draw(){
         clear();
+        for(Balloon balloon : balloons) {
+            balloon.updateLocation();
+            balloon.display();
+        }
         cannon.updateLocation();
         cannon.display();
     }

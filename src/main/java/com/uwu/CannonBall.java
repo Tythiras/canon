@@ -7,16 +7,16 @@ import static processing.core.PConstants.CENTER;
 
 public class CannonBall extends Ball {
     float size;
-    float force = 10;
+    float force = 20;
     float angle = 0;
     CannonBall(PApplet parent, float x, float y, float size, float angle) {
-        super(parent, x, y, size, size/2);
+        super(parent, x, y, 50, size);
         this.size = size;
         this.health = 10;
 
         PVector direction = PVector.fromAngle(PApplet.radians(angle));
 
-        this.applyAcceleration(direction.setMag(force));
+        this.applyAcceleration(direction.setMag(force / (size / 30)));
         this.rotation = direction.mag() % 90;
     }
     void updateLocation() {

@@ -40,7 +40,7 @@ public class Cannon {
 
         x += Math.cos(Math.toRadians(angle)) * riffleHeight;
         y += Math.sin(PApplet.radians(angle)) * riffleHeight;
-        CannonBall ball = new CannonBall(p, x, y, 50, angle);
+        CannonBall ball = new CannonBall(p, x, y, 25, angle);
         cannonBalls.add(ball);
     }
     void updateLocation() {
